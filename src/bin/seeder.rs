@@ -350,14 +350,14 @@ async fn main() -> anyhow::Result<()> {
         // Small sleep so names differ
         std::thread::sleep(std::time::Duration::from_millis(5));
 
-        let msg = ActiveModel {
+        let message = ActiveModel {
             name: Set(random_name()),
             message: Set(random_message(i).to_owned()),
             likes: Set(random_likes(i)),
             ..Default::default()
         };
 
-        msg.insert(&database).await?;
+        message.insert(&database).await?;
         println!("Seeded message {}", i + 1);
     }
 
