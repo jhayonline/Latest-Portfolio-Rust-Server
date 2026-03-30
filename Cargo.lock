@@ -2445,6 +2445,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "dotenvy",
+ "rand 0.10.0",
  "salvo",
  "sea-orm",
  "serde",
