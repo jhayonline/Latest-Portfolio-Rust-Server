@@ -338,11 +338,11 @@ async fn main() -> anyhow::Result<()> {
         .init();
 
     let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    let db: DatabaseConnection = database::connect(&database_url).await?;
+    let database: DatabaseConnection = database::connect(&database_url).await?;
 
     // Delete all existing rows
     use portfolio_server::entity::wall_message::Entity as WallMessage;
-    WallMessage::delete_many().exec(&db).await?;
+    WallMessage::delete_many().exec(&database).await?;
     println!("Cleared existing messages");
 
     // Insert 100 fake messages.
@@ -357,7 +357,7 @@ async fn main() -> anyhow::Result<()> {
             ..Default::default()
         };
 
-        msg.insert(&db).await?;
+        msg.insert(&database).await?;
         println!("Seeded message {}", i + 1);
     }
 
