@@ -1,0 +1,8 @@
+{
+  "build": {
+    "command": "cargo build --release"
+  },
+  "start": {
+    "command": "./target/release/portfolio_server"
+  }
+}
